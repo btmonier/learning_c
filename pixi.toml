@@ -1,0 +1,33 @@
+[workspace]
+name = "learning_c"
+version = "0.1.0"
+description = "A small repo for learning C with Pixi"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64"]
+
+[dependencies]
+gcc = "*"
+gdb = "*"
+bash = "*"
+
+[tasks.build]
+cmd = "mkdir -p build/{{ target }} && gcc -Wall -Wextra -std=c11 -g src/{{ target }}/main.c -o build/{{ target }}/main"
+args = ["target"]
+
+[tasks.run]
+cmd = "./build/{{ target }}/main"
+args = ["target"]
+depends-on = [{ task = "build", args = ["{{ target }}"] }]
+
+[tasks.build-run]
+cmd = "./build/{{ target }}/main"
+args = ["target"]
+depends-on = [{ task = "build", args = ["{{ target }}"] }]
+
+[tasks.debug]
+cmd = "gdb ./build/{{ target }}/main"
+args = ["target"]
+depends-on = [{ task = "build", args = ["{{ target }}"] }]
+
+[tasks.clean]
+cmd = "rm -rf build"
