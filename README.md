@@ -18,5 +18,5 @@ pixi install
 Run example code:
 
 ``` bash
-pixi run build-run pointers
+pixi run exec pointers
 ```

@@ -11,15 +11,10 @@ gdb = "*"
 bash = "*"
 
 [tasks.build]
-cmd = "mkdir -p build/{{ target }} && gcc -Wall -Wextra -std=c11 -g src/{{ target }}/main.c -o build/{{ target }}/main"
+cmd = "mkdir -p build/{{ target }} && gcc -Wall -Wextra -std=c11 -g -nodefaultrpaths src/{{ target }}/main.c -o build/{{ target }}/main"
 args = ["target"]
 
-[tasks.run]
-cmd = "./build/{{ target }}/main"
-args = ["target"]
-depends-on = [{ task = "build", args = ["{{ target }}"] }]
-
-[tasks.build-run]
+[tasks.exec]
 cmd = "./build/{{ target }}/main"
 args = ["target"]
 depends-on = [{ task = "build", args = ["{{ target }}"] }]
