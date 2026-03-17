@@ -18,5 +18,6 @@ pixi install
 Run example code:
 
 ``` bash
-pixi run exec pointers
+# This will run `src/001_variables/`
+pixi run exec 1
 ```

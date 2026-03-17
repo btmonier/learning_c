@@ -15,14 +15,12 @@ cmd = "mkdir -p build/{{ target }} && gcc -Wall -Wextra -std=c11 -g -nodefaultrp
 args = ["target"]
 
 [tasks.exec]
-cmd = "./build/{{ target }}/main"
+cmd = "bash scripts/resolve_and_run.sh {{ target }}"
 args = ["target"]
-depends-on = [{ task = "build", args = ["{{ target }}"] }]
 
 [tasks.debug]
-cmd = "gdb ./build/{{ target }}/main"
+cmd = "bash scripts/resolve_and_debug.sh {{ target }}"
 args = ["target"]
-depends-on = [{ task = "build", args = ["{{ target }}"] }]
 
 [tasks.clean]
 cmd = "rm -rf build"
