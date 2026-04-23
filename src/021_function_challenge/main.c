@@ -3,7 +3,7 @@
 // Jumping ahead here...
 #define ARRAY_LENGTH(x) (sizeof(x) / sizeof((x)[0]))
 
-int sum(int x[], int size);
+int sum(int x[], int size); // need to pass size because of array decay - passing a pointer
 
 int main() {
     int obs[] = { 3, 4, 5, 1 };
